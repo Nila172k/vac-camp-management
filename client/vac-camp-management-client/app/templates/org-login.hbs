@@ -1,0 +1,33 @@
+<html>
+    <head></head>
+    <body>
+        <form {{action "submitData" on="submit"}}>
+            <center>
+                <h2>Admin Login</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <label>userName</label>
+                        </td>
+                        <td>
+                            <input type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>password</label>
+                        </td>
+                        <td>
+                            <input type="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="login"></td>
+                    </tr>
+                </table>
+            </center>
+        </form>
+    </body>
+</html>
+{{outlet}}

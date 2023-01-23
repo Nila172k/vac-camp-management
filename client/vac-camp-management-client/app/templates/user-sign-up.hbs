@@ -1,0 +1,180 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <form {{action "createAccount" on="submit"}}>
+           <div class="sections">
+                <div class="section-body">
+                    <div class="error-message-div">
+                        <center>
+                                {{#if errorMessage}}
+                                 <span class="" id="error-message">
+                                    {{PopulateErrorMessage}}
+                                </span>   
+                                {{/if}}
+                        </center>
+                    </div>
+
+                         <div class="body-container">
+                            <div class="form-body">   
+                                <div class="form-body-header">
+                                    <center>
+                                        <span style="font-weight:bold;font-size:19px;">Sign-Up</span>
+                                    </center>
+                                </div> 
+
+                                <div class="form-body-content">   
+                                    
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>First Name</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" value=firstName required="true"}}
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Last Name</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" value=lastName}}
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Email</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" value=email}}
+                                        </div>
+
+                                    </div>  
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Aadhar Number</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" value=aadharNumber required="true"}}
+                                        </div>
+
+                                    </div> 
+
+                                    
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label" >
+                                            <span>Password</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="password" id="password" value=password required="true" }}
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Confirm Password</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" value=cPassword required="true"}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Phone Number</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" value=phoneNumber}}
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="form-field half-field">
+                                        <div class="comp-one">  
+                                            <div class="form-field-label half-field">
+                                                <span>Gender</span>
+                                            </div>
+
+                                            <div class="form-field-value half-field">
+                                                <select required="true" onchange={{action "updateGender" value="target.value"}}>
+                                                    <option>--</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        
+                                         <div class="comp-one">
+                                            <div class="form-field-label half-field">
+                                                <span>DOB</span>
+                                            </div>
+
+                                            <div class="form-field-value half-field">
+                                                {{input type="date" value=dob}}
+                                            </div>
+                                         </div>
+
+                                    </div>
+
+                                    <div class="captcha-field">
+                                        <div  class="captcha" id="captcha">
+                                           {{checking}}
+                                        </div>
+                                        <div  class="captcha-refresh" {{action "updateFlag"}}>
+                                                <i class="fa fa-refresh" style="padding-left:18px; padding-top:8px"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label" id="user-captcha">
+                                            <span></span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" placeholder="Enter Captcha" value=captcha required="true"}}
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>    
+                               <div class="form-body-footer">
+                                <center>
+                                    <button class="primary-button">Submit</button>
+                                    <button class="secondary-button">Cancel</button>
+                                </center> 
+                                <center>
+                                    {{#link-to 'user-sign-in' style="margin-left=-20px"}}
+                                    Login
+                                    {{/link-to}}
+                                     
+                                </center>
+                                       
+                               </div>   
+                                  
+                            </div>
+                         </div>
+
+                     </div>
+            </div>
+        </form>
+    </body>
+    
+</html>
+
+{{outlet}}

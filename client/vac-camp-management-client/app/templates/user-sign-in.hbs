@@ -1,0 +1,63 @@
+<html>
+    <head></head>
+    <body>
+        <form {{action "validateUser" on="submit"}}>
+            <div class="sections">
+                <div class="section-body">
+                    <div class="error-message-div">
+                        <center>
+                            <span class="" id="error-message"> </span>
+                        </center>
+                    </div>
+
+                    <div class="body-container">
+                        <div class="body-container-left">
+                            <div class="container-left-bg">
+                            </div>
+                        </div>
+
+                        <div class="body-container-right">
+                            <div class="right-container">
+                                <div class="form-title">
+                                    <span>Login</span>
+                                </div>
+
+                                <div class="form-field">
+                                    <div class="form-field-label">
+                                        <span>User Name</span>
+                                    </div>
+                                    <div class="form-field-value">
+                                        {{input type="text" value=userName required="true"}}
+                                    </div>
+                                </div>
+                                    
+                                <div class="form-field">  
+                                    <div class="form-field-label">
+                                        <span>Password</span>
+                                    </div>
+                                    <div class="form-field-value">
+                                        {{input type="text" value=password required="true"}}
+                                    </div>
+                                </div>
+
+                                <div class="form-field">
+                                    <button class="primary-button" type="submit">Login</button>
+                                    <button class="secondary-button">Clear</button>
+                                </div>
+
+                                <div class="form-field">
+                                    Don't have an account?
+                                    {{#link-to 'user-sign-up'}}Sign-up{{/link-to}}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </body>
+</html>
+{{outlet}}

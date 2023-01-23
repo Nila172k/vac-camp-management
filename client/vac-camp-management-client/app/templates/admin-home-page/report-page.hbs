@@ -1,0 +1,138 @@
+<html>
+    <head></head>
+    <body>
+        <div class="sections">
+            <div class="container">
+                <div class="section-left">
+                    <div class="menu-item">
+                        <i class="fa fa-dashboard"></i>
+                        <a href="#">Report</a>
+                    </div>
+
+                    <div class="menu-item">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <a href="#">New Camp</a>
+                    </div>
+                    <div class="menu-item">
+                          <i class="fa fa-edit" aria-hidden="true"></i>
+                        <a href="#">Edit Stock</a>
+                    </div>
+                    <div class="menu-item">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <a href="#">View Camps</a>
+                    </div>
+                    <div class="menu-item">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <a href="#">Sign out</a>
+                    </div>
+                </div>
+
+                <div class="section-middle">
+                    <div class="report-comp">
+                        <div class="report-one">
+                            <center>
+                                <span class="report-label">Partially Vaccinated</span>
+                            </center>
+                            <div class="report-image partial-vaccinated">
+                            </div>
+                            <div class="report-result">
+                                    <span>{{model.totalPartiallyVaccinated}}</span>
+                            </div>
+                        </div>
+                        <div class="report-one">
+                            <center>
+                                <span class="report-label">Fully Vaccinated</span>
+                            </center>
+                            <div class="report-image fully-vaccinated">
+                            </div>
+                            <div class="report-result">
+                                    <span>{{model.totalFullyVaccinated}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-comp">
+                        <div class="report-one">
+                            <center>
+                                <span class="report-label">Active Camps</span> 
+                            </center>
+                            <div class="report-image active-sites">
+                            </div>
+                            <div class="report-result">
+                                    <span>{{model.totalActiveCamps}}</span>
+                            </div>
+                        </div>
+                        <div class="report-one">
+                            <center>
+                                <span class="report-label">Vaccinated Men</span> 
+                            </center>
+                            <div class="report-image vac-men">
+                            </div>
+                            <div class="report-result">
+                                    <span>{{model.totalVacciantedMen}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="report-comp">
+                        <div class="report-one">
+                            <center>
+                                <span class="report-label">Vaccinated Women</span> 
+                            </center>
+                            <div class="report-image vac-women">
+                            </div>
+                            <div class="report-result">
+                                    <span>{{model.totalVacciantedWomen}}</span>
+                            </div>
+                        </div>
+                        <div class="report-one">
+                            <center>
+                                <span class="report-label">Others Vaccinated</span> 
+                            </center>
+                            <div class="report-image vac-others">
+                            </div>
+                            <div class="report-result">
+                                    <span>{{model.totalVacciantedOthers}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="section-rgt">
+                    <div class="section-rgt-content">
+                        <div class="report-title-label">
+                             <span>Report by city</span>
+                        </div>
+                       <div class="search-box">
+                            <input type="text" id="searchKey" placeholder="Search for city.." title="Type in a name"
+                                onchange={{action "searchByCity" }}>
+                       </div>
+                        <table id="report-table">
+                            <tr>
+                                <th class="sort">City
+                                    {{!-- <i class="fa fa-sort-up" id="sort-asc"></i>
+                                    <i class="fa fa-sort-down" id="sort-desc"></i> --}}
+                                </th>
+                                <th>Partially Vaccinated Count</th>
+                                <th>Fully Vaccinated Count</th>
+                            </tr>
+                            {{#each model.summary as |summary|}}
+                                <tr>
+                                    <td>{{summary.City}}</td>
+                                    <td>{{summary.partiallyVaccinated}}</td>
+                                    <td>{{summary.fullyVaccinated}}</td>
+                                </tr>
+                            {{/each}}
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+       
+    </body>
+</html>
+{{outlet}}

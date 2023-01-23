@@ -1,0 +1,26 @@
+
+                <div class="section-left">
+                    <div class="menu-item">
+                        <i class="fa fa-dashboard"></i>
+                        {{#link-to 'admins.report-page'}}
+                            Dashboard
+                        {{/link-to}}
+                    </div>
+
+                    <div class="menu-item">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        {{#link-to 'admins.register-camp'}}
+                            Register Camp
+                        {{/link-to}}
+                    </div>
+                    <div class="menu-item">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        {{#link-to 'admins.list-camps'}}
+                            List Camps
+                        {{/link-to}}
+                    </div>
+                    <div class="menu-item">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <a href="sign-in" {{action "signOut"}}>Sign out</a>
+                    </div>
+                </div>

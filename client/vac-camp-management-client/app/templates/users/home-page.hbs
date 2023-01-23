@@ -1,0 +1,178 @@
+<html>      
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+       <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+       <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    </head>
+    <body >
+        <form {{action "submitData" on="submit"}} id="form-one">
+           <div class="sections">
+                <div class="section-body">
+                    <div class="error-message-div">
+                        <center>
+                                {{#if errorMessage}}
+                                 <span class="" id="error-message">
+                                    {{PopulateErrorMessage}}
+                                </span>   
+                                {{/if}}
+                        </center>
+                    </div>
+
+                         <div class="body-container">
+                            <div class="form-body">   
+                                <div class="form-body-header">
+                                    <center>
+                                        <span style="font-weight:bold;font-size:19px;">Registration for vaccination</span>
+                                    </center>
+                                </div> 
+
+                                <div class="form-body-content-test">   
+                                    
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>City</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            <select onchange={{action "updateCity" value="target.value"}} class="test-select" >
+                                                <option>--</option>
+                                                {{#each model as |city| }}
+                                                    <option value={{city.id}}> {{city.name}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Camping site</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            
+                                            <select onchange={{action "updateCampId" value="target.value"}}  class="test-select">
+                                                <option>--</option>
+                                                {{#each availableCamps as |camp| }}
+                                                    <option value={{camp.id}}> {{camp.address}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+
+                                    </div> 
+
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label">
+                                            <span>Date of vaccination</span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="date" id="date-field" value=dateOfVaccination }}
+                                        </div>
+
+                                    </div>  
+
+                                    <div class="form-field half-field">
+                                        <div class="comp-one">  
+                                            <div class="form-field-label half-field">
+                                                <span>Slot</span>
+                                            </div>
+
+                                            <div class="form-field-value half-field">
+                                                <select required="true" onchange={{action "updateSlot" value="target.value"}} >
+                                                    <option>--</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        
+                                         <div class="comp-one">
+                                            <div class="form-field-label half-field">
+                                                <span>Dosage</span>
+                                            </div>
+
+                                            <div class="form-field-value half-field">
+                                                <select required="true" onchange={{action "updateDosage" value="target.value"}} >
+                                                    <option>--</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                            </div>
+                                         </div>
+
+                                    </div>
+
+                                    <div class="captcha-field">
+                                        <div  class="captcha" id="captcha">
+                                           {{preRequiredData}}
+                                        </div>
+                                        <div  class="captcha-refresh" {{action "updateFlag"}}>
+                                                <i class="fa fa-refresh" style="padding-left:18px; padding-top:8px"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-field half-field">
+                                        <div class="form-field-label" id="user-captcha">
+                                            <span></span>
+                                        </div>
+
+                                        <div class="form-field-value">
+                                            {{input type="text" placeholder="Enter Captcha" value=captcha required="true"}}
+                                        </div>
+                                    </div>
+
+                                    <div class="notes-div" style="">
+                                        <i>
+                                            <span> Slot 1 - 09 AM to 11 AM</span>
+                                            <span> Slot 2 - 12 AM to 02 AM</span>
+                                            <span> Slot 3 - 03 AM to 05 AM</span>
+                                        </i>
+                                       
+                                    </div>
+
+                                </div>    
+                               <div class="form-body-footer home-page">
+                                <center>
+                                     <button class="secondary-button" {{action "clearData"}}>Cancel</button>
+                                    <button class="primary-button">Submit</button>
+                                     <button class="secondary-button" >Logout</button>
+                                </center> 
+                                <center>
+                                    {{#if  (seq regCount "1" )}}
+                                        <div id="certificate" {{action "downloadCertificate"}}>
+                                            <i class="fa fa-download"></i>
+                                            <span >Download E-Certificate</span>
+                                        </div>
+                                    {{else }}
+                                        {{#if  (seq regCount "2" )}}
+                                            <div id="certificate" {{action "downloadCertificate"}}>
+                                                <i class="fa fa-download"></i>
+                                                <span >Download E-Certificate</span>
+                                            </div>
+                                        {{/if}}
+                                    {{/if}}
+                                </center>
+                                       
+                               </div>   
+                                  
+                            </div>
+                         </div>
+
+                     </div>
+            </div>
+        </form>
+        <script>
+            $(document).ready(function() {
+                $(document).on('mouseover', '.test-select', function() {
+                    $('.test-select').select2();
+                });
+
+            });
+        </script>
+    </body>
+</html>
+
+
+{{outlet}}

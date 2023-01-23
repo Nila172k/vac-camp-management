@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    </head>
+    <body>
+        <form id="form-one" {{action "submitData" on="submit"}}>
+            <div class="sections">
+                <div class="section-body">
+                    <div class="error-message-div">
+                        <center>
+                                {{#if errorMessage}}
+                                 <span class="" id="error-message">
+                                    {{PopulateErrorMessage}}
+                                </span>   
+                                {{/if}}
+                        </center>
+                    </div>
+                </div>
+            <div class="container">
+                <div class="section-left">
+                    <div class="menu-item">
+                        <i class="fa fa-dashboard"></i>
+                        <a href="#">Report</a>
+                    </div>
+
+                    <div class="menu-item">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <a href="#">New Camp</a>
+                    </div>
+                    <div class="menu-item">
+                          <i class="fa fa-edit" aria-hidden="true"></i>
+                        <a href="#">Edit Stock</a>
+                    </div>
+                    <div class="menu-item">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                        <a href="#">View Camps</a>
+                    </div>
+                    <div class="menu-item">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <a href="#">Sign out</a>
+                    </div>
+                </div>
+                
+
+                <div class="form-table">
+                    <div class="header">
+                        <span>Camps</span>
+                        <i class="fa fa-hospital-o"></i>
+                    </div>
+
+                    <div class="table-holder">
+                        <table>
+                            <tr>
+                                <th>Camp Id</th>
+                                <th>City</th>
+                                <th>Address</th>
+                                <th>Stock <i class="fa fa-edit"></i> </th>
+                                <th>Created Date</th>
+                            </tr>
+                            {{#each model.camps as |camp|}}
+                                <tr>
+                                    <td value={{camp.campId}}>{{camp.campId}}</td>
+                                    <td>{{camp.City}}</td>
+                                    <td>{{camp.address}}</td>
+                                    <td class="">
+                                        {{#link-to 'admin-home-page.edit-stock' camp.campId}}
+                                            {{camp.Stock}} 
+                                        {{/link-to}}
+                                    </td>
+                                    <td>{{camp.createdOn}}</td>
+                                </tr>
+                            {{/each}}
+                        </table>
+                    </div>
+
+                </div>
+                
+
+            </div>
+
+        </div>
+        </form>
+    </body>
+</html>
+{{outlet}}

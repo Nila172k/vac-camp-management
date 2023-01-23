@@ -1,0 +1,75 @@
+<html>
+      
+    <head></head>
+    <body>
+        <form {{action "submitData" on="submit"}}>
+            <center>
+                <h2>Registration for first vaccination</h2>
+            <table>
+                <tr>
+                    <td>
+                        <label>City</label>
+                    </td>
+                    <td>
+                        <input list="brow1" onchange={{action "updateCity" value="target.value"}} id="test" >
+                        <datalist id = "brow1" >
+                            {{#each model as |city| }}
+                                <option value={{city.id}}> {{city.name}}</option>
+                            {{/each}}
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Camping Site</label>
+                    </td>
+                    <td>
+                       <select onchange={{action "updateCampId" value="target.value"}}>
+                            <option>--</option>
+                            {{#each availableCamps as |camp| }}
+                                <option value={{camp.id}}> {{camp.address}}</option>
+                            {{/each}}
+                       </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Slot</label>
+                    </td>
+                    <td>
+                        <select onchange={{action "updateSlot" value="target.value"}}>
+                            <option>--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Date Of Vaccination</label>
+                    </td>
+                    <td>
+                        {{input type="date" value=dateOfVaccination}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Dosage Count</label>
+                    </td>
+
+                    <td>
+                        {{input type="text" value="1" readonly="true"}}
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td></td>
+                    <td> <input type="submit"> </td>
+                </tr>
+            </table>
+            </center>
+        </form>
+    </body>
+</html>
+{{outlet}}
